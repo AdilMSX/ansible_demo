@@ -13,6 +13,8 @@
         face: "{{ face }}"
         state: "{{ state }}"
       register: results
+    - debug:
+        var: results
     - name: Set output data as fact
       set_stats:
         data:
