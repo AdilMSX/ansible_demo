@@ -1,0 +1,8 @@
+plugin: networktocode.nautobot.inventory
+api_endpoint: https://demo.nautobot.com
+token: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+validate_certs: True
+config_context: False
+
+query_filters:
+  - role: leaf
