@@ -3,4 +3,4 @@
   hosts: localhost
   tasks:
     - debug: 
-        var: results
+        var: my_output
