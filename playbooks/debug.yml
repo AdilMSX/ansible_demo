@@ -1,0 +1,6 @@
+---
+- name: Test Debug
+  hosts: localhost
+  tasks:
+    - debug: 
+        var: my_output

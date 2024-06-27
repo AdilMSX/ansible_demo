@@ -1,0 +1,11 @@
+# inventory.yml file in YAML format
+# Example command line: ansible-inventory -v --list -i inventory.yml
+
+plugin: networktocode.nautobot.inventory
+api_endpoint: https://demo.nautobot.com
+token: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+validate_certs: True
+config_context: False
+
+group_by:
+  - device_roles

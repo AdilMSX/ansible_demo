@@ -1,0 +1,23 @@
+- name: Nautobot Operations
+  hosts: localhost
+  vars_files:
+    - vars/creds.yml
+    - vars/devices.yml
+  tasks:
+    - name: Update Device Rack
+      networktocode.nautobot.device:
+        url: "{{ url }}"
+        token: "{{ token }}"
+        name: "{{ item.device }}"
+        rack: "{{ item.rack }}"
+        position: "{{ item.position }}"
+        face: "{{ item.face }}"
+        state: "{{ item.state }}"
+      register: results
+      loop: "{{ devices }}"
+    - debug:
+        var: results
+    - name: Set output data as fact
+      set_stats:
+        data:
+          my_output: "{{ results }}"

@@ -1,0 +1,12 @@
+devices:
+  - device: "ams01-dist-01"
+    rack: "ams01-107"
+    position: 9
+    face: "Front"
+    state: "present"
+  
+  - device: "ams01-edge-01"
+    rack: "ams01-101"
+    position: 30
+    face: "Front"
+    state: "present"
