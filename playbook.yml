@@ -13,3 +13,7 @@
           face: "{{ face }}"
           state: "{{ state }}"
       register: results
+    - name: Set output data as fact
+      set_stats:
+        data:
+          my_output: "{{ results.stdout }}"
