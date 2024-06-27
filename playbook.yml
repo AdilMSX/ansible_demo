@@ -1,12 +1,12 @@
-- name: Test Play
+- name: Nautobot Operations
   hosts: localhost
   tasks:
-    - name: Test
+    - name: Update Device Rack
       networktocode.nautobot.device:
-          url: https://demo.nautobot.com
-          token: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-          name: ams01-dist-01
-          rack: ams01-101
-          position: 10
-          face: Front
-          state: present
+          url: "{{ url }}"
+          token: "{{ token }}"
+          name: "{{ device }}"
+          rack: "{{ rack }}"
+          position: "{{ position }}"
+          face: "{{ face }}"
+          state: "{{ state }}"
