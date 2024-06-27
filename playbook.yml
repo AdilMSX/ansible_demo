@@ -2,22 +2,14 @@
   hosts: all
   tasks:
     #mise en place de l'acl standard
-    - name: Deploy CYBW ACL
-      networktocode.nautobot.ip_address:
-
-        data:
-          address: "192.168.10.60/24"
-          vrf: "Test VRF"
-          nat_inside: "192.168.100.1/24"
-        state: present
-
-    networktocode.nautobot.device:
-        url: https://demo.nautobot.com
-        token: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        data:
-          name: "ams01-dist-01"
-          serial: "FXS110011"
-        state: "present"
+    - name: Test
+      networktocode.nautobot.device:
+          url: https://demo.nautobot.com
+          token: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          data:
+            name: "ams01-dist-01"
+            serial: "FXS110011"
+          state: "present"
     #creation du compte SNMP
     # - name: deploy CYBW SNMP
     #   cisco.ios.ios_snmp_server:
