@@ -7,7 +7,7 @@
       networktocode.nautobot.device:
           url: "{{ url }}"
           token: "{{ token }}"
-          name: "{{ device }}"
+          name: ams01-edge-02
           rack: "{{ rack }}"
           position: "{{ position }}"
           face: "{{ face }}"
