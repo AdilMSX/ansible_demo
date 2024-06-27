@@ -6,3 +6,10 @@ api_endpoint: https://demo.nautobot.com
 token: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 validate_certs: True
 config_context: False
+
+group_by:
+  - device_roles
+query_filters:
+  - role: network-edge-router
+device_query_filters:
+  - has_primary_ip: 'true'
