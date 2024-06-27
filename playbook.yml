@@ -12,3 +12,4 @@
           position: "{{ position }}"
           face: "{{ face }}"
           state: "{{ state }}"
+      register: results
