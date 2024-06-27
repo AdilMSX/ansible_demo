@@ -1,7 +1,6 @@
 - name: Test Play
   hosts: localhost
   tasks:
-    #mise en place de l'acl standard
     - name: Test
       networktocode.nautobot.device:
           url: https://demo.nautobot.com
@@ -11,24 +10,3 @@
           position: 10
           face: Front
           state: present
-    #creation du compte SNMP
-    # - name: deploy CYBW SNMP
-    #   cisco.ios.ios_snmp_server:
-    #     config:
-    #       groups:
-    #         - group: GRP_CYBW
-    #           version: v3
-    #           version_option: priv
-    #           acl_v4: SNMP_CYBW
-    #       users:
-    #         - group: GRP_CYBW
-    #           username: CYBERW_SNMPV3
-    #           authentication:
-    #             algorithm: sha
-    #             password: XXXX
-    #           encryption:
-    #             priv: aes
-    #             priv_option: 128
-    #             password: XXXX
-    #           acl_v4: SNMP_CYBW
-    #           version: v3
