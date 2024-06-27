@@ -1,0 +1,46 @@
+- name: Test Play
+  hosts: all
+  tasks:
+    #mise en place de l'acl standard
+    - name: Deploy CYBW ACL
+      cisco.ios.ios_acls:
+        config:
+          - afi: ipv4
+            acls:
+              - name: SNMP_CYBW
+                acl_type: standard
+                aces:
+                  - grant: permit
+                    sequence: 10
+                    source:
+                      address: 10.100.100.11
+                  - grant: permit
+                    sequence: 20
+                    source:
+                      address: 10.100.100.12
+                  - grant: permit
+                    sequence: 30
+                    source:
+                      address: 10.100.100.13
+        state: replaced
+    #creation du compte SNMP
+    # - name: deploy CYBW SNMP
+    #   cisco.ios.ios_snmp_server:
+    #     config:
+    #       groups:
+    #         - group: GRP_CYBW
+    #           version: v3
+    #           version_option: priv
+    #           acl_v4: SNMP_CYBW
+    #       users:
+    #         - group: GRP_CYBW
+    #           username: CYBERW_SNMPV3
+    #           authentication:
+    #             algorithm: sha
+    #             password: XXXX
+    #           encryption:
+    #             priv: aes
+    #             priv_option: 128
+    #             password: XXXX
+    #           acl_v4: SNMP_CYBW
+    #           version: v3
