@@ -1,5 +1,7 @@
 - name: Nautobot Operations
   hosts: localhost
+  vars_files:
+    - vars/main.yml
   tasks:
     - name: Update Device Rack
       networktocode.nautobot.device:
