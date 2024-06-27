@@ -1,15 +1,16 @@
 - name: Test Play
-  hosts: all
+  hosts: localhost
   tasks:
     #mise en place de l'acl standard
     - name: Test
       networktocode.nautobot.device:
           url: https://demo.nautobot.com
           token: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-          data:
-            name: "ams01-dist-01"
-            serial: "FXS110011"
-          state: "present"
+          name: ams01-dist-01
+          rack: ams01-101
+          position: 10
+          face: Front
+          state: present
     #creation du compte SNMP
     # - name: deploy CYBW SNMP
     #   cisco.ios.ios_snmp_server:
