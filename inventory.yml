@@ -6,8 +6,3 @@ api_endpoint: https://demo.nautobot.com
 token: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 validate_certs: True
 config_context: False
-
-group_by:
-  - device_roles
-device_query_filters:
-  - has_primary_ip: 'true'
