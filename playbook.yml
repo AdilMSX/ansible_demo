@@ -5,13 +5,13 @@
   tasks:
     - name: Update Device Rack
       networktocode.nautobot.device:
-          url: "{{ url }}"
-          token: "{{ token }}"
-          name: ams01-edge-02
-          rack: "{{ rack }}"
-          position: "{{ position }}"
-          face: "{{ face }}"
-          state: "{{ state }}"
+        url: "{{ url }}"
+        token: "{{ token }}"
+        name: ams01-edge-02
+        rack: "{{ rack }}"
+        position: "{{ position }}"
+        face: "{{ face }}"
+        state: "{{ state }}"
       register: results
     - name: Set output data as fact
       set_stats:
