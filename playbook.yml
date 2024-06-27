@@ -16,4 +16,4 @@
     - name: Set output data as fact
       set_stats:
         data:
-          my_output: "{{ results.stdout }}"
+          my_output: "{{ results }}"
