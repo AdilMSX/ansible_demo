@@ -44,6 +44,17 @@
           name: Deploy Prod
           organization: Default
 
+    # Run Deploy Dev job template when there is a push to the devel branch
+    - name: Respond to push events to the devel branch
+      condition: >
+        event.repo_name == "ansible_demo"
+        and event.type == "push"
+        and event.gitref is search("devel")
+      action:
+        run_job_template:
+          name: Deploy Dev
+          organization: Default
+
     # Run Deploy Dev job template when a merge request is created
     # in the devel branch
     - name: Respond to merge request creation
