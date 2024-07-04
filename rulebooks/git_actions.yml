@@ -1,5 +1,5 @@
 ---
-- name: Capture posted events from GitLab
+- name: Capture posted events from GitHub
   hosts: all
   sources:
     - name: Match events posted to port 5000
