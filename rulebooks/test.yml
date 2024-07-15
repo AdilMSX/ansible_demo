@@ -3,7 +3,7 @@
   hosts: all
   sources:
     - name: Inject custom events
-      ansible.eda.generic:
+      generic_source_plugin:
         payload:
           - event_type: "login"
             user: "user1"
@@ -15,6 +15,19 @@
           - event_type: "logout"
             user: "user1"
             status: "success"
+        randomize: false
+        display: true
+        timestamp: true
+        time_format: "iso8601"
+        create_index: true
+        startup_delay: 2.0
+        event_delay: 1.0
+        repeat_delay: 0.5
+        loop_delay: 3.0
+        shutdown_after: 30.0  # Increased to ensure all events are processed
+        loop_count: 1  # Set to 1 to avoid repetitive loops
+        repeat_count: 1
+        blob_size: 256
         final_payload:
           event_type: "shutdown"
           message: "All events processed"
@@ -51,12 +64,19 @@
             user: "{{ event.user }}"
             status: "{{ event.status }}"
 
-    # # Respond to shutdown event
-    # - name: Respond to shutdown event
-    #   condition: event.event_type == "shutdown"
-    #   action:
-    #     debug:
-    #       msg: "Shutting down after processing events. Message: {{ event.message }}"
+    # Custom action on transaction event
+    - name: Custom action on transaction
+      condition: event.event_type == "transaction" and event.amount > 100
+      action:
+        debug:
+          msg: "High-value transaction of {{ event.amount }} by user {{ event.user }}."
+
+    # Respond to shutdown event
+    - name: Respond to shutdown event
+      condition: event.event_type == "shutdown"
+      action:
+        debug:
+          msg: "Shutting down after processing events. Message: {{ event.message }}"
 
     # Respond to all events
     - name: Respond to all events
@@ -64,17 +84,3 @@
       action:
         debug:
           msg: "Processing event of type: {{ event.event_type }}"
-
-    # Custom action on login event
-    - name: Custom action on login
-      condition: event.event_type == "login" and event.user == "user1"
-      action:
-        debug:
-          msg: "User {{ event.user }} has logged in successfully."
-
-    # Custom action on transaction event
-    - name: Custom action on transaction
-      condition: event.event_type == "transaction" and event.amount > 100
-      action:
-        debug:
-          msg: "High-value transaction of {{ event.amount }} by user {{ event.user }}."
