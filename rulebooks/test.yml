@@ -1,0 +1,44 @@
+---
+rules:
+  - name: Sample Rulebook
+    hosts: localhost
+    sources:
+      - name: custom_event_source
+        type: generic_source_plugin
+        config:
+          payload:
+            - event_type: "login"
+              user: "user1"
+              status: "success"
+            - event_type: "transaction"
+              user: "user1"
+              amount: 150.0
+              status: "completed"
+            - event_type: "logout"
+              user: "user1"
+              status: "success"
+          randomize: false
+          display: true
+          timestamp: true
+          time_format: "iso8601"
+          create_index: true
+          startup_delay: 2.0
+          event_delay: 1.0
+          repeat_delay: 0.5
+          loop_delay: 3.0
+          shutdown_after: 15.0
+          loop_count: 2
+          repeat_count: 1
+          blob_size: 256
+          final_payload:
+            event_type: "shutdown"
+            message: "All events processed"
+
+    actions:
+      - debug: msg="Processing event {{ event }}"
+      - set_fact:
+          event_count: "{{ event_count | default(0) | int + 1 }}"
+      - name: Check if shutdown event
+        when: event.event_type == "shutdown"
+        debug: msg="Shutting down after processing {{ event_count }} events."
+
