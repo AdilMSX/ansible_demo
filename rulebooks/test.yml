@@ -15,18 +15,6 @@
           - event_type: "logout"
             user: "user1"
             status: "success"
-        randomize: false
-        display: true
-        timestamp: true
-        time_format: "iso8601"
-        create_index: true
-        startup_delay: 2.0
-        event_delay: 1.0
-        repeat_delay: 0.5
-        loop_delay: 3.0
-        shutdown_after: 15.0
-        loop_count: 1
-        repeat_count: 1
         final_payload:
           event_type: "shutdown"
           message: "All events processed"
