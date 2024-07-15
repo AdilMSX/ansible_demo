@@ -24,9 +24,9 @@
         event_delay: 1.0
         repeat_delay: 0.5
         loop_delay: 3.0
-        shutdown_after: 15.0
+        #shutdown_after: 15.0
         loop_count: 2
-        repeat_count: 1
+        repeat_count: 6
         blob_size: 256
         final_payload:
           event_type: "shutdown"
