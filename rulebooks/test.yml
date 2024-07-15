@@ -24,10 +24,9 @@
         event_delay: 1.0
         repeat_delay: 0.5
         loop_delay: 3.0
-        shutdown_after: 60.0  # Increased to ensure all events are processed
+        shutdown_after: 60.0
         loop_count: 1
         repeat_count: 1
-        blob_size: 256
         final_payload:
           event_type: "shutdown"
           message: "All events processed"
@@ -38,7 +37,7 @@
       condition: event.event_type == "login"
       action:
         post_event:
-          event:
+          test:
             type: "{{ event.event_type }}"
             user: "{{ event.user }}"
             status: "{{ event.status }}"
@@ -48,7 +47,7 @@
       condition: event.event_type == "transaction"
       action:
         post_event:
-          event:
+          test:
             type: "{{ event.event_type }}"
             user: "{{ event.user }}"
             amount: "{{ event.amount }}"
@@ -59,7 +58,7 @@
       condition: event.event_type == "logout"
       action:
         post_event:
-          event:
+          test:
             type: "{{ event.event_type }}"
             user: "{{ event.user }}"
             status: "{{ event.status }}"
@@ -69,7 +68,7 @@
       condition: event.event_type == "transaction"
       action:
         debug:
-          msg: "High-value transaction of {{ event.amount }} by user {{ event.user }}."
+          msg: "High-value transaction of {{ test.amount }} by user {{ test.user }}."
 
     # # Respond to shutdown event
     # - name: Respond to shutdown event
