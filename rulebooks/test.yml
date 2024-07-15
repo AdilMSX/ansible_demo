@@ -37,20 +37,9 @@
       condition: event.event_type == "login"
       action:
         post_event:
-          test:
+          event:
             type: "{{ event.event_type }}"
             user: "{{ event.user }}"
-            status: "{{ event.status }}"
-
-    # Capture transaction events
-    - name: Capture transaction events
-      condition: event.event_type == "transaction"
-      action:
-        post_event:
-          test:
-            type: "{{ event.event_type }}"
-            user: "{{ event.user }}"
-            amount: "{{ event.amount }}"
             status: "{{ event.status }}"
 
     # Capture logout events
@@ -58,9 +47,20 @@
       condition: event.event_type == "logout"
       action:
         post_event:
-          test:
+          event:
             type: "{{ event.event_type }}"
             user: "{{ event.user }}"
+            status: "{{ event.status }}"
+            
+    # Capture transaction events
+    - name: Capture transaction events
+      condition: event.event_type == "transaction"
+      action:
+        post_event:
+          event:
+            type: "{{ event.event_type }}"
+            user: "{{ event.user }}"
+            amount: "{{ event.amount }}"
             status: "{{ event.status }}"
 
     # Custom action on transaction event
@@ -68,7 +68,7 @@
       condition: event.event_type == "transaction"
       action:
         debug:
-          msg: "High-value transaction of {{ test.amount }} by user {{ test.user }}."
+          msg: "High-value transaction of {{ event.amount }} by user {{ event.user }}."
 
     # # Respond to shutdown event
     # - name: Respond to shutdown event
