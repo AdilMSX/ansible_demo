@@ -32,36 +32,36 @@
           message: "All events processed"
 
   rules:
-    # Capture login events
-    - name: Capture login events
-      condition: event.event_type == "login"
-      action:
-        post_event:
-          event:
-            type: "{{ event.event_type }}"
-            user: "{{ event.user }}"
-            status: "{{ event.status }}"
+    # # Capture login events
+    # - name: Capture login events
+    #   condition: event.event_type == "login"
+    #   action:
+    #     post_event:
+    #       event:
+    #         type: "{{ event.event_type }}"
+    #         user: "{{ event.user }}"
+    #         status: "{{ event.status }}"
 
-    # Capture logout events
-    - name: Capture logout events
-      condition: event.event_type == "logout"
-      action:
-        post_event:
-          event:
-            type: "{{ event.event_type }}"
-            user: "{{ event.user }}"
-            status: "{{ event.status }}"
+    # # Capture logout events
+    # - name: Capture logout events
+    #   condition: event.event_type == "logout"
+    #   action:
+    #     post_event:
+    #       event:
+    #         type: "{{ event.event_type }}"
+    #         user: "{{ event.user }}"
+    #         status: "{{ event.status }}"
             
-    # Capture transaction events
-    - name: Capture transaction events
-      condition: event.event_type == "transaction"
-      action:
-        post_event:
-          event:
-            type: "{{ event.event_type }}"
-            user: "{{ event.user }}"
-            amount: "{{ event.amount }}"
-            status: "{{ event.status }}"
+    # # Capture transaction events
+    # - name: Capture transaction events
+    #   condition: event.event_type == "transaction"
+    #   action:
+    #     post_event:
+    #       event:
+    #         type: "{{ event.event_type }}"
+    #         user: "{{ event.user }}"
+    #         amount: "{{ event.amount }}"
+    #         status: "{{ event.status }}"
 
     # Custom action on transaction event
     - name: Custom action on transaction
