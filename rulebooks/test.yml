@@ -12,6 +12,10 @@
             user: "user1"
             amount: 50.0
             status: "completed"
+          - event_type: "transaction"
+            user: "user3"
+            amount: 750.0
+            status: "completed"
           - event_type: "logout"
             user: "user1"
             status: "success"
@@ -29,7 +33,7 @@
 
     # Respond to all events
     - name: Respond to all events
-      condition: event.event_type in ["login", "logout"]
+      condition: event.event_type in ["login", "transaction" ,"logout"]
       action:
         debug:
           msg: "Processing event of type: {{ event.event_type }}"
