@@ -1,3 +1,4 @@
 ---
 - name: Facts
   hosts: all
+  gather_facts: true
