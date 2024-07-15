@@ -12,10 +12,10 @@
             user: "user1"
             amount: 50.0
             status: "completed"
-          # - event_type: "transaction"
-          #   user: "user3"
-          #   amount: 750.0
-          #   status: "completed"
+          - event_type: "transaction"
+            user: "user3"
+            amount: 750.0
+            status: "completed"
           - event_type: "logout"
             user: "user1"
             status: "success"
