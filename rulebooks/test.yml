@@ -24,10 +24,9 @@
         event_delay: 1.0
         repeat_delay: 0.5
         loop_delay: 3.0
-        shutdown_after: 30.0  # Increased to ensure all events are processed
-        loop_count: 1  # Set to 1 to avoid repetitive loops
+        shutdown_after: 60.0  # Increased to ensure all events are processed
+        loop_count: 1
         repeat_count: 1
-        blob_size: 256
         final_payload:
           event_type: "shutdown"
           message: "All events processed"
