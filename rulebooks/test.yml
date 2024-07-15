@@ -3,7 +3,7 @@
   hosts: all
   sources:
     - name: Inject custom events
-      ansible.eda.generi:
+      ansible.eda.generic:
         payload:
           - event_type: "login"
             user: "user1"
