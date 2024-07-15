@@ -51,12 +51,12 @@
             user: "{{ event.user }}"
             status: "{{ event.status }}"
 
-    # Respond to shutdown event
-    - name: Respond to shutdown event
-      condition: event.event_type == "shutdown"
-      action:
-        debug:
-          msg: "Shutting down after processing events. Message: {{ event.message }}"
+    # # Respond to shutdown event
+    # - name: Respond to shutdown event
+    #   condition: event.event_type == "shutdown"
+    #   action:
+    #     debug:
+    #       msg: "Shutting down after processing events. Message: {{ event.message }}"
 
     # Respond to all events
     - name: Respond to all events
