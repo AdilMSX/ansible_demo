@@ -10,7 +10,7 @@
             status: "success"
           - event_type: "transaction"
             user: "user1"
-            amount: 150.0
+            amount: 50.0
             status: "completed"
           - event_type: "logout"
             user: "user1"
@@ -22,7 +22,7 @@
   rules:
     # Custom action on transaction event
     - name: Custom action on transaction
-      condition: event.event_type == "transaction"
+      condition: event.event_type == "transaction" and event.amount > 100
       action:
         debug:
           msg: "High-value transaction of {{ event.amount }} by user {{ event.user }}."
