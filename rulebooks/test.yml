@@ -27,46 +27,42 @@
         shutdown_after: 60.0  # Increased to ensure all events are processed
         loop_count: 1
         repeat_count: 1
+        blob_size: 256
         final_payload:
           event_type: "shutdown"
           message: "All events processed"
+
   rules:
     # Capture login events
     - name: Capture login events
       condition: event.event_type == "login"
       action:
-        - debug:
-            msg: "Login event captured: {{ event }}"
-        - post_event:
-            event:
-              type: "{{ event.event_type }}"
-              user: "{{ event.user }}"
-              status: "{{ event.status }}"
+        post_event:
+          event:
+            type: "{{ event.event_type }}"
+            user: "{{ event.user }}"
+            status: "{{ event.status }}"
 
     # Capture transaction events
     - name: Capture transaction events
       condition: event.event_type == "transaction"
       action:
-        - debug:
-            msg: "Transaction event captured: {{ event }}"
-        - post_event:
-            event:
-              type: "{{ event.event_type }}"
-              user: "{{ event.user }}"
-              amount: "{{ event.amount }}"
-              status: "{{ event.status }}"
+        post_event:
+          event:
+            type: "{{ event.event_type }}"
+            user: "{{ event.user }}"
+            amount: "{{ event.amount }}"
+            status: "{{ event.status }}"
 
     # Capture logout events
     - name: Capture logout events
       condition: event.event_type == "logout"
       action:
-        - debug:
-            msg: "Logout event captured: {{ event }}"
-        - post_event:
-            event:
-              type: "{{ event.event_type }}"
-              user: "{{ event.user }}"
-              status: "{{ event.status }}"
+        post_event:
+          event:
+            type: "{{ event.event_type }}"
+            user: "{{ event.user }}"
+            status: "{{ event.status }}"
 
     # Custom action on transaction event
     - name: Custom action on transaction
