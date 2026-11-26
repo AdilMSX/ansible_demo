@@ -8,7 +8,7 @@
         port: 5000
         #token: testTokenToAuthenticateWebhook
       filters:
-        - ansible.eda.dashes_to_underscores:
+        - eda.builtin.dashes_to_underscores:
 
   rules:
     # Capture push events
